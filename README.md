@@ -1,7 +1,7 @@
 <br clear="both">
 
 <div align="center">
-  <iframe src="https://giphy.com/embed/ViQb3BY5WQNQiQJd90" width="372" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/Zhot-code-coding-cod-ViQb3BY5WQNQiQJd90"></a></p>
+ ![Funny GIF](https://media.giphy.com/media/ViQb3BY5WQNQiQJd90/giphy.gif)
 </div>
 
 ###
