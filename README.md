@@ -1,7 +1,9 @@
 <br clear="both">
 
 <div align="center">
- ![Funny GIF](https://media.giphy.com/media/ViQb3BY5WQNQiQJd90/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/ViQb3BY5WQNQiQJd90/giphy.gif" width="372" height="480" />
+</p>
 </div>
 
 ###
