@@ -209,7 +209,7 @@
 
 
 <h3 align="left">📈   Profile Visitors :</h3>
-###
+
 
 <br clear="both">
 
@@ -221,10 +221,6 @@
 
 <h3 align="left">🔥   My Stats :</h3>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=LazizjonAsatov&show_icons=true&theme=tokyonight" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=LazizjonAsatov&layout=compact&theme=tokyonight" />
-</p>
 
 
 ###
