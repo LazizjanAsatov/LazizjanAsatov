@@ -40,7 +40,7 @@
   <a href="https://www.instagram.com/iamlazizjon/" target="_blank">
     <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/instagram/default.svg" width="52" height="40" alt="instagram logo"  />
   </a>
-  <a href="@IamLazizjon" target="_blank">
+  <a href="https://t.me/IamLazizjon" target="_blank">
     <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/telegram/default.svg" width="52" height="40" alt="telegram logo"  />
   </a>
   <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/whatsapp/default.svg" width="52" height="40" alt="whatsapp logo"  />
@@ -207,8 +207,8 @@
 
 ###
 
-<h3 align="left">🔥   My Stats :</h3>
 
+<h3 align="left">📈   Profile Visitors :</h3>
 ###
 
 <br clear="both">
@@ -219,6 +219,15 @@
 
 ###
 
+<h3 align="left">🔥   My Stats :</h3>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=LazizjonAsatov&show_icons=true&theme=tokyonight" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=LazizjonAsatov&layout=compact&theme=tokyonight" />
+</p>
+
+
+###
 <br clear="both">
 
 <div align="center">
