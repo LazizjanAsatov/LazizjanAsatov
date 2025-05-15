@@ -2,7 +2,7 @@
 
 <div align="center">
 <p align="center">
-  <img src="https://media.giphy.com/media/ViQb3BY5WQNQiQJd90/giphy.gif" width="372" height="480" />
+  <img src="https://media.giphy.com/media/ViQb3BY5WQNQiQJd90/giphy.gif" width="450" height="480" />
 </p>
 </div>
 
@@ -59,7 +59,7 @@
 
 ###
 
-<p align="left">🧙‍♂️I’m Lazizjon – Software Engineer | AI Enthusiast | Full-Stack Developer<br><br>	•	🌍 Based in Riga, Latvia<br><br>	•	🔭 Currently working as a Software Engineer, building scalable, AI-driven web applications with Python, Django, and modern front-end technologies<br><br>	•	📚 Actively expanding my skills in Machine Learning, Computer Vision, and Data Engineering, using tools like TensorFlow, LangChain, and Docker<br><br>	•	⚡ Outside of work, I love building AI side projects, contributing to open-source, and creating tools that solve real-world problems</p>
+<p align="left">🧙‍♂️I’m Lazizjon – Software Engineer | AI developer | Full-Stack Developer<br><br>	•	🌍 Based in Riga, Latvia<br><br>	•	🔭 Currently working as a Software Engineer, building scalable, AI-driven web applications with Python, Django, and modern front-end technologies<br><br>	•	📚 Actively expanding my skills in Machine Learning, Computer Vision, and Data Engineering, using tools like TensorFlow, LangChain, and Docker<br><br>	•	⚡ Outside of work, I love building AI side projects, contributing to open-source, and creating tools that solve real-world problems</p>
 
 ###
 
