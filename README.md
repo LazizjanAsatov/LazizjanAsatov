@@ -59,10 +59,9 @@
 
 ###
 
-<p align="left">🧙‍♂️I’m Lazizjon – Software Engineer | AI developer | Full-Stack Developer<br><br>	•	🌍 Based in Riga, Latvia<br><br>	•	🔭 Currently working as a Software Engineer, building scalable, AI-driven web applications with Python, Django, and modern front-end technologies<br><br>	•	📚 Actively expanding my skills in Machine Learning, Computer Vision, and Data Engineering, using tools like TensorFlow, LangChain, and Docker<br><br>	•	⚡ Outside of work, I love building AI side projects, contributing to open-source, and creating tools that solve real-world problems</p>
+<p align="left">🧙‍♂️I’m Lazizjon – Software Engineer <br><br>	•	🌍 Based in Riga, Latvia<br><br>	•	🔭 Currently working as a Software Engineer, building scalable, AI-driven web applications with Python, Django, and modern front-end technologies<br><br>	•	📚 Actively expanding my skills in Machine Learning, Computer Vision, and Data Engineering,<br><br>	•	⚡ Outside of work, I love building AI side projects, contributing to open-source, and creating tools that solve real-world problems</p>
 
 ###
-
 <h3 align="left">🛠 Language and tools</h3>
 
 ###
