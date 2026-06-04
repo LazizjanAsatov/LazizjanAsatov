@@ -150,18 +150,6 @@
 
 ###
 
-
-<h3 align="left">📈   Profile Visitors :</h3>
-
-
-<br clear="both">
-
-<div align="center">
-  <img src="https://profile-counter.glitch.me/LazizjanAsatov/count.svg?"  />
-</div>
-
-###
-
 <h3 align="left">🔥   My Stats :</h3>
 
 
