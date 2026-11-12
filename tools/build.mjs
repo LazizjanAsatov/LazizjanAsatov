@@ -25,6 +25,7 @@ const ME = {
     ['desktop apps', 'desktop', 'Rust', ''],
     ['mobile apps', 'mobile', 'Swift', ''],
     ['web', 'web', 'TypeScript · Django', ''],
+    ['games', 'games', 'TypeScript', ''],
     ['data + analysis', 'data', 'Python · R · MATLAB', '# where I started'],
   ],
   links: [
@@ -218,8 +219,6 @@ const aboutDesktop = () => terminal([
   { out: ME.now[1] },
   { cmd: 'cat stack.txt' },
   ...ME.build.map((b) => ({ kv: [b[0], b[2], b[3]] })),
-  { cmd: 'ls ~/public' },
-  { out: 'Authpeek/    jira-dropdown-sync/    neetcode-submissions/' },
   { cmd: '', cursor: true },
 ], { W: 840, fs: 14, lh: 23, px: 24, vx: 214, alt: ABOUT_ALT });
 const aboutMobile = () => terminal([
@@ -233,9 +232,6 @@ const aboutMobile = () => terminal([
   { out: 'Python, and an iOS app in Swift.' },
   { cmd: 'cat stack.txt' },
   ...ME.build.map((b) => ({ kv: [b[1], b[2], ''] })),
-  { cmd: 'ls ~/public' },
-  { out: 'Authpeek/  jira-dropdown-sync/' },
-  { out: 'neetcode-submissions/' },
   { cmd: '', cursor: true },
 ], { W: 420, fs: 13.5, lh: 22, px: 16, vx: 112, alt: ABOUT_ALT });
 
