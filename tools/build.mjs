@@ -26,6 +26,7 @@ const ME = {
     ['mobile apps', 'mobile', 'Swift', ''],
     ['web', 'web', 'TypeScript · Django', ''],
     ['games', 'games', 'TypeScript', ''],
+    ['computer vision', 'vision', 'OpenCV · PyTorch · TensorFlow', ''],
     ['data + analysis', 'data', 'Python · R · MATLAB', '# where I started'],
   ],
   links: [
