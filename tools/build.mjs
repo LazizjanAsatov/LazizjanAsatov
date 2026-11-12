@@ -25,14 +25,7 @@ const ME = {
     ['desktop apps', 'desktop', 'Rust', ''],
     ['mobile apps', 'mobile', 'Swift', ''],
     ['web', 'web', 'TypeScript · Django', ''],
-    ['games', 'games', 'TypeScript', ''],
     ['data + analysis', 'data', 'Python · R · MATLAB', '# where I started'],
-  ],
-  projects: [
-    { slug: 'authpeek', name: 'Authpeek', url: 'https://github.com/LazizjanAsatov/Authpeek', lang: 'JavaScript', color: '#f1e05a',
-      lines: ['Chrome authenticator that fills in your', '2-step codes for you. Encrypted, open source.'] },
-    { slug: 'jira-dropdown-sync', name: 'jira-dropdown-sync', url: 'https://github.com/LazizjanAsatov/jira-dropdown-sync', lang: 'Python', color: '#3572A5',
-      lines: ['Keeps a Jira dropdown in sync with a Telegram', "bot's report. Adds only, with approval in chat."] },
   ],
   links: [
     ['linkedin', 'https://www.linkedin.com/in/lazizjon-asatov/'],
@@ -246,16 +239,6 @@ const aboutMobile = () => terminal([
   { cmd: '', cursor: true },
 ], { W: 420, fs: 13.5, lh: 22, px: 16, vx: 112, alt: ABOUT_ALT });
 
-/* ---------- project cards (404 x 118, two side by side on desktop, stacked on a phone) ---------- */
-const card = (p) => svg(404, 118, `${p.name}: ${p.lines.join(' ')} ${p.lang}.`, `
-<style>text{font-family:${MONO}}</style>
-<rect x=".5" y=".5" width="403" height="117" rx="10" fill="${C.panel}" stroke="${C.line}"/>
-<text x="20" y="35" font-size="16" font-weight="700" fill="${C.hi}"><tspan fill="${C.green}">▸ </tspan>${p.name}</text>
-<text x="20" y="61" font-size="12.5" fill="${C.mid}">${p.lines[0]}</text>
-<text x="20" y="79" font-size="12.5" fill="${C.mid}">${p.lines[1]}</text>
-<circle cx="25" cy="98" r="4" fill="${p.color}"/><text x="36" y="102" font-size="11.5" fill="${C.dim}">${p.lang}</text>
-<text x="384" y="102" font-size="11.5" fill="${C.green}" text-anchor="end">open ↗</text>`);
-
 /* ---------- link chips ---------- */
 const linkChip = (label) => {
   const tw = Math.round(label.length * 8.2), w = tw + 60;
@@ -273,7 +256,6 @@ const files = {
   'about.svg': aboutDesktop(),
   'about-mobile.svg': aboutMobile(),
 };
-for (const p of ME.projects) files[`project-${p.slug}.svg`] = card(p);
 for (const [label] of ME.links) files[`link-${label}.svg`] = linkChip(label);
 for (const [n, s] of Object.entries(files)) fs.writeFileSync(path.join(OUT, n), s);
 
@@ -297,10 +279,6 @@ const readme = `<p align="center">
       <img src="assets/about.svg" width="840" alt="${ABOUT_ALT}">
     </picture>
   </a>
-</p>
-
-<p align="center">
-${ME.projects.map((p) => `  <a href="${p.url}"><img src="assets/project-${p.slug}.svg" width="404" alt="${p.name}: ${p.lines.join(' ')}"></a>`).join('\n')}
 </p>
 
 <p align="center">
