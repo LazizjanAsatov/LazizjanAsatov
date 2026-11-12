@@ -194,14 +194,23 @@ ${chips(ME.stack, x, 572, { size: 12.5, h: 27, cw: 7.9, pad: 13 })}
 
 /* ---------- terminal block ---------- */
 function terminal(lines, { W, fs: size, lh, px, vx, alt }) {
-  const H = 62 + (lines.length - 1) * lh + 20;
-  let t = '';
-  lines.forEach((l, i) => {
-    const y = 62 + i * lh;
+  let t = '', y = 62 - lh;
+  for (const l of lines) {
+    y += lh;
     if ('cmd' in l) t += `<text x="${px}" y="${y}" font-size="${size}"><tspan fill="${C.green}">$ </tspan><tspan fill="${C.hi}">${l.cmd}</tspan>${l.cursor ? `<tspan class="cur" fill="${C.green}">█</tspan>` : ''}</text>`;
     else if ('kv' in l) t += `<text x="${px}" y="${y}" font-size="${size}" fill="${C.mid}">${l.kv[0]}</text><text x="${vx}" y="${y}" font-size="${size}" fill="${C.hi}">${l.kv[1]}${l.kv[2] ? `<tspan fill="${C.dim}" dx="${size}">${l.kv[2]}</tspan>` : ''}</text>`;
-    else t += `<text x="${px}" y="${y}" font-size="${size}" fill="${C.mid}">${l.out}</text>`;
-  });
+    else if ('note' in l) t += `<text x="${px}" y="${y}" font-size="${size}" fill="${C.dim}">${l.note}</text>`;
+    else if ('bars' in l) {
+      // A small bar chart that takes two text rows: one bar per value, height and brightness by size.
+      const bh = lh * 2 - 8, top = y - size + 2, max = Math.max(1, ...l.bars);
+      l.bars.forEach((v, i) => {
+        const h = v ? Math.max(2, Math.round((v / max) * bh)) : 1;
+        t += `<rect x="${px + i * (l.bw + l.gap)}" y="${top + bh - h}" width="${l.bw}" height="${h}" fill="${C.green}" fill-opacity="${v ? (0.35 + (0.65 * v) / max).toFixed(2) : '.15'}"/>`;
+      });
+      y += lh;
+    } else t += `<text x="${px}" y="${y}" font-size="${size}" fill="${C.mid}">${l.out}</text>`;
+  }
+  const H = y + 20;
   return svg(W, H, alt, `
 <style>text{font-family:${MONO}}@keyframes blink{50%{opacity:0}}.cur{animation:blink 1.1s steps(1) infinite}@media (prefers-reduced-motion:reduce){.cur{animation:none}}</style>
 <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="10" fill="${C.panel}" stroke="${C.line}"/>
@@ -210,7 +219,31 @@ function terminal(lines, { W, fs: size, lh, px, vx, alt }) {
 <text x="${W / 2}" y="20" text-anchor="middle" font-size="11" fill="${C.dim}">laziz@riga: ~</text>
 ${t}`);
 }
-const ABOUT_ALT = `About. ${ME.name}, ${ME.role} in ${ME.place}. ${ME.now.join(' ')} What I build:${ME.build.map((b) => `${b[0]} (${b[2].replace(/ · /g, ', ')})`).join('; ')}.`;
+const ABOUT_ALT = `About. ${ME.name}, ${ME.role} in ${ME.place}. ${ME.now.join(' ')} What I build: ${ME.build.map((b) => `${b[0]} (${b[2].replace(/ · /g, ', ')})`).join('; ')}. Followed by my GitHub activity over the last year.`;
+
+// Live activity, written by tools/activity.mjs (a daily GitHub Actions job). The section is skipped if the file is missing.
+const ACTIVITY_FILE = path.join(HERE, 'activity.json');
+const ACT = fs.existsSync(ACTIVITY_FILE) ? JSON.parse(fs.readFileSync(ACTIVITY_FILE, 'utf8')) : null;
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const niceDate = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[m - 1]} ${y}`; };
+const thousands = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const ACT_SUMMARY = ACT ? `${thousands(ACT.total)} contributions on ${ACT.activeDays} days` : '';
+const ACT_RECENT = ACT && ACT.lastActive ? `most recent ${niceDate(ACT.lastActive)}` : '';
+const ABOUT_LABEL = ACT ? `${ABOUT_ALT} ${ACT_SUMMARY} in the last year, ${ACT_RECENT}.` : ABOUT_ALT;
+const activityDesktop = () => (ACT ? [
+  { cmd: './activity --last-year' },
+  { out: `${ACT_SUMMARY} · ${ACT_RECENT}` },
+  { bars: ACT.weeks.slice(-52), bw: 11, gap: 4 },
+  { note: '# one bar per week, oldest on the left · refreshed by a daily job' },
+] : []);
+const activityMobile = () => (ACT ? [
+  { cmd: './activity --last-year' },
+  { out: ACT_SUMMARY },
+  { out: ACT_RECENT },
+  { bars: ACT.weeks.slice(-26), bw: 11, gap: 4 },
+  { note: '# last 26 weeks · refreshed daily' },
+] : []);
+
 const aboutDesktop = () => terminal([
   { cmd: 'whoami' },
   { out: `${ME.name}. Software engineer in ${ME.place}.` },
@@ -219,8 +252,9 @@ const aboutDesktop = () => terminal([
   { out: ME.now[1] },
   { cmd: 'cat stack.txt' },
   ...ME.build.map((b) => ({ kv: [b[0], b[2], b[3]] })),
+  ...activityDesktop(),
   { cmd: '', cursor: true },
-], { W: 840, fs: 14, lh: 23, px: 24, vx: 214, alt: ABOUT_ALT });
+], { W: 840, fs: 14, lh: 23, px: 24, vx: 214, alt: ABOUT_LABEL });
 const aboutMobile = () => terminal([
   { cmd: 'whoami' },
   { out: `${ME.name}. Software engineer` },
@@ -232,8 +266,9 @@ const aboutMobile = () => terminal([
   { out: 'Python, and an iOS app in Swift.' },
   { cmd: 'cat stack.txt' },
   ...ME.build.map((b) => ({ kv: [b[1], b[2], ''] })),
+  ...activityMobile(),
   { cmd: '', cursor: true },
-], { W: 420, fs: 13.5, lh: 22, px: 16, vx: 112, alt: ABOUT_ALT });
+], { W: 420, fs: 13.5, lh: 22, px: 16, vx: 112, alt: ABOUT_LABEL });
 
 /* ---------- link chips ---------- */
 const linkChip = (label) => {

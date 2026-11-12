@@ -30,6 +30,19 @@ A square picture works best. To use only part of a picture, add a crop as fracti
 `prep.py` writes `prep.json` (the picture as a brightness grid, and the name as outlines). `build.mjs` reads it,
 so the build itself needs only Node.
 
+## The activity line
+
+The last section of the terminal block (contributions in the last year, with one bar per week) is refreshed by
+`.github/workflows/profile-activity.yml`. Once a day it runs `activity.mjs`, which writes `activity.json`, then
+`build.mjs`, and commits only if the numbers changed. Run it by hand from the Actions tab, or locally:
+
+```bash
+GITHUB_TOKEN=$(gh auth token) node tools/activity.mjs
+```
+
+The numbers are the ones visitors see on the contribution graph. Delete `activity.json` and the workflow to remove
+the section.
+
 ## Notes
 
 - The name is drawn from Consolas Bold outlines (`C:/Windows/Fonts/consolab.ttf`). Pass `--font other.ttf` to `prep.py`
